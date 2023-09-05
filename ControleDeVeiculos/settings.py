@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'ControleDeVeiculos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ControleDeVeiculos',
+        'NAME': 'controledeveiculos',  # Criar o banco de dados, antes de rodar: python manage.py runserver
         'USER': 'root',
         'PASSWORD': 'confirm',
         'HOST': 'localhost',
