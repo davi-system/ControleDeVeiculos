@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import VeiculoFormModel
+from .forms import VeiculoFormModel, MotoristaFormModel
 from django.contrib import messages
 
 def index(request):
@@ -25,4 +25,18 @@ def veiculo(request):
 
 
 def motorista(request):
-    return render(request, 'motorista.html')
+    if str(request.method) == 'POST':
+        form = MotoristaFormModel(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Cadastro realizado com sucesso!')
+
+            form = MotoristaFormModel()
+        else:
+            messages.error(request, 'Algo deu errado!')
+    else:
+        form = MotoristaFormModel()
+    context = {
+        'form': form
+    }
+    return render(request, 'motorista.html', context)
