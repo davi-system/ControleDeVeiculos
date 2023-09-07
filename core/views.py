@@ -1,9 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import VeiculoFormModel, MotoristaFormModel, AluguelFormModel
+from .models import Aluguel
 from django.contrib import messages
 
 def index(request):
-    return render(request, 'index.html')
+    aluguel = Aluguel.objects.order_by('-data_saida')  # ordem decrescente
+    context = {
+        'aluguel': aluguel
+    }
+    return render(request, 'index.html', context)
 
 
 def veiculo(request):
@@ -58,3 +63,27 @@ def aluguel(request):
         'form': form
     }
     return render(request, 'aluguel.html', context)
+
+
+def aluguel_edit(request, id):
+    aluguel = get_object_or_404(Aluguel, id=id)
+    form = AluguelFormModel(instance=aluguel)
+    context = {
+        'aluguel': aluguel,
+        'form': form
+    }
+    if str(request.method) == 'POST':
+        form = AluguelFormModel(request.POST, instance=aluguel)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        else:
+            return render(request, 'aluguel_edit.html', context)
+    else:
+        return render(request, 'aluguel_edit.html', context)
+
+
+def aluguel_delete(request, id):
+    aluguel = get_object_or_404(Aluguel, id=id)
+    aluguel.delete()
+    return redirect('index')

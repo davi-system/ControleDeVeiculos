@@ -9,7 +9,7 @@
         {% bootstrap_css %}
     </head>
     <body>
-        <div class="container" style="padding-top: 5px;">
+        <div class="container-fluid" style="padding-top: 5px;">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <a class="navbar-brand" href="{% url 'index' %}">Controle de Veículos</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,51 @@
                     </div>
                 </div>
             </nav>
+
+            <br /><br />
+
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ações</th>
+                            <th scope="col">Veículo</th>
+                            <th scope="col">Motorista</th>
+                            <th scope="col">Data Saida</th>
+                            <th scope="col">Hora Saida</th>
+                            <th scope="col">Km Saida</th>
+                            <th scope="col">Destino</th>
+                            <th scope="col">Data Retorno</th>
+                            <th scope="col">Hora Retorno</th>
+                            <th scope="col">Km Retorno</th>
+                            <th scope="col">Km Percorrido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for alu in aluguel %}
+                            <tr>
+                                <td>
+                                    <a href="#"><button class="btn btn-warning">Visualizar</button></a>
+                                    <a href="{% url 'aluguel_edit' alu.id %}"><button class="btn btn-success">Editar</button></a>
+                                    <a onclick="confirmarDeleteAluguel({{ alu.id }})" class="btn btn-danger">Excluir</a>
+                                </td>
+                                <td>{{ alu.veiculo }}</td>
+                                <td>{{ alu.motorista }}</td>
+                                <td>{{ alu.data_saida }}</td>
+                                <td>{{ alu.hora_saida }}</td>
+                                <td>{{ alu.km_saida }}</td>
+                                <td>{{ alu.destino }}</td>
+                                <td>{{ alu.data_retorno }}</td>
+                                <td>{{ alu.hora_retorno }}</td>
+                                <td>{{ alu.km_retorno }}</td>
+                                <td>{{ alu.km_percorrido }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
         </div>
+
+        <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
         {% bootstrap_javascript jquery='full' %}
     </body>
 </html>

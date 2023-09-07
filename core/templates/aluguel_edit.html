@@ -1,0 +1,50 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Aluguel</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+        {% bootstrap_css %}
+    </head>
+    <body>
+        <div class="container" style="padding-top: 5px;">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="{% url 'index' %}">Controle de Veículos</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div div class="navbar-nav">
+                        <a class="nav-link active" href="{% url 'index' %}">Página Inicial <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'veiculo' %}">Veículos</a>
+                        <a class="nav-link" href="{% url 'motorista' %}">Motoristas</a>
+                        <a class="nav-link" href="{% url 'aluguel' %}">Aluguel</a>
+                    </div>
+                </div>
+            </nav>
+
+            <br /><br />
+
+            <h1><center>Editar Cadastro do Aluguel</center></h1>
+
+            {% bootstrap_messages %}
+
+            <form action="{% url 'aluguel_edit' aluguel.id %}" method="post" class="form" autocomplete="off">
+
+                {% csrf_token %}
+
+                {% bootstrap_form form %}
+
+                {% buttons %}
+                    <button type="submit" class="btn btn-success">Editar</button>
+                {% endbuttons %}
+            </form>
+
+            {% bootstrap_messages %}
+
+        </div>
+        {% bootstrap_javascript jquery='full' %}
+    </body>
+</html>
