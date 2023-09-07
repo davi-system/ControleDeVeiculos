@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Aluguel{% endblock title %}
+
+{% block conteudo %}
+    <h1><center>Visualização do cadastro de Aluguel</center></h1>
+
+    <label>Veículo</label>
+    <input type="text" name="veiculo" class="form-control" value="{{ form.veiculo }}" disabled />
+    <label>Motorista</label>
+    <input type="text" name="motorista" class="form-control" value="{{ form.motorista }}" disabled />
+    <label>Data Saida</label>
+    <input type="text" name="data_saida" class="form-control" value="{{ form.data_saida }}" disabled />
+    <label>Hora Saida</label>
+    <input type="text" name="hora_saida" class="form-control" value="{{ form.hora_saida }}" disabled />
+    <label>Km Saida</label>
+    <input type="text" name="km_saida" class="form-control" value="{{ form.km_saida }}" disabled />
+    <label>Destino</label>
+    <input type="text" name="destino" class="form-control" value="{{ form.destino }}" disabled />
+    <label>Data Retorno</label>
+    <input type="text" name="destino" class="form-control" value="{{ form.destino }}" disabled />
+    <label>Hora Retorno</label>
+    <input type="text" name="hora_retorno" class="form-control" value="{{ form.hora_retorno }}" disabled />
+    <label>Km Retorno</label>
+    <input type="text" name="km_retorno" class="form-control" value="{{ form.km_retorno }}" disabled />
+    <label>Km Percorrido</label>
+    <input type="text" name="km_percorrido" class="form-control" value="{{ form.km_percorrido }}" disabled />
+{% endblock conteudo %}

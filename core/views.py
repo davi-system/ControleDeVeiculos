@@ -83,6 +83,14 @@ def aluguel_edit(request, id):
         return render(request, 'aluguel_edit.html', context)
 
 
+def aluguel_view(request, id):
+    form = get_object_or_404(Aluguel, id=id)
+    context = {
+        'form': form
+    }
+    return render(request, 'aluguel_view.html', context)
+
+
 def aluguel_delete(request, id):
     aluguel = get_object_or_404(Aluguel, id=id)
     aluguel.delete()
