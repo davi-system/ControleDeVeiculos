@@ -4,7 +4,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <title>Motorista</title>
+        <title>Aluguel</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
         {% bootstrap_css %}
     </head>
@@ -27,11 +27,11 @@
 
             <br /><br />
 
-            <h1><center>Cadastro de Motorista</center></h1>
+            <h1><center>Aluguel de Veículo</center></h1>
 
             {% bootstrap_messages %}
 
-            <form action="{% url 'motorista' %}" method="post" class="form" autocomplete="off">
+            <form action="{% url 'aluguel' %}" method="post" class="form" autocomplete="off">
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 {% buttons %}
