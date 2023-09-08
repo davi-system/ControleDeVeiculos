@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load static %}
 
 {% block title %}Menu{% endblock title %}
 
 {% block conteudo %}
+
+    <form action="{% url 'index' %}" method="get" class="form" autocomplete="off">
+        {% csrf_token %}
+        <label>Consultar por Data de Saída</label>
+        <div class="input-group">
+            <input type="date" class="form-control" name="data_saida">
+            {% buttons %}
+                <button type="submit" class="btn btn-secondary">Pesquisar</button>
+                <a href="{% url 'index' %}" class="btn btn-light">Limpar</a>
+            {% endbuttons %}
+        </div>
+    </form>
+
     <table class="table table-striped">
         <thead>
             <tr>

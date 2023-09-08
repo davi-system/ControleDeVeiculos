@@ -4,7 +4,12 @@ from .models import Aluguel
 from django.contrib import messages
 
 def index(request):
-    aluguel = Aluguel.objects.order_by('-data_saida')  # ordem decrescente
+    aluguel = Aluguel.objects.order_by('-data_saida')
+    data_saida_pesquisa = request.GET.get('data_saida')
+
+    if data_saida_pesquisa:
+        aluguel = Aluguel.objects.filter(data_saida=data_saida_pesquisa)
+
     context = {
         'aluguel': aluguel
     }
