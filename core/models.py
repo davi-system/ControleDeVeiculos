@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Veiculo(models.Model):
     placa = models.CharField('Placa', max_length=8)
     marca = models.CharField('Marca', max_length=15)
@@ -7,7 +8,7 @@ class Veiculo(models.Model):
     km_troca_oleo = models.DecimalField('km_Troca_Oleo', max_digits=8, decimal_places=4)
 
     def __str__(self):
-        return  self.marca
+        return self.marca
 
 
 class Motorista(models.Model):
@@ -17,7 +18,6 @@ class Motorista(models.Model):
 
     def __str__(self):
         return self.nome
-
 
 
 class Aluguel(models.Model):
